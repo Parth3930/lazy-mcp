@@ -1,10 +1,10 @@
 [package]
-name = "mcplex"
+name = "mcp-warmpool"
 version = "0.2.0"
 edition = "2024"
 description = "A proxy MCP server that lazy-loads other MCP servers to save context tokens."
 license = "MIT"
-repository = "https://github.com/Parth3930/mcplex"
+repository = "https://github.com/Parth3930/mcp-warmpool"
 keywords = ["mcp", "claude", "ai", "llm"]
 categories = ["command-line-utilities", "development-tools"]
 
@@ -21,5 +21,5 @@ tokio = { version = "1", features = ["full"] }
 toml = "1.1.2"
 
 [[bin]]
-name = "mcplex"
+name = "mcp-warmpool"
 path = "src/main.rs"

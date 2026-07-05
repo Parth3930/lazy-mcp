@@ -1,10 +1,10 @@
 {
-  "name": "mcplex",
+  "name": "mcp-warmpool",
   "version": "0.2.0",
   "description": "A proxy MCP server that lazy-loads other MCP servers to save context tokens.",
   "main": "index.js",
   "bin": {
-    "mcplex": "./bin/mcplex.js"
+    "mcp-warmpool": "./bin/mcp-warmpool.js"
   },
   "keywords": [
     "mcp",

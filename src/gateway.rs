@@ -25,7 +25,7 @@ impl ServerHandler for Gateway {
                 .enable_prompts()
                 .build(),
             server_info: Implementation {
-                name: "mcplex".into(),
+                name: "mcp-warmpool".into(),
                 version: "0.1.0".into(),
                 description: None,
                 icons: None,
