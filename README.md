@@ -1,18 +1,18 @@
-# mcp-warmpool
+# lazy-mcp
 
 **npx for MCP servers** — install the catalog once, pay the context cost only for what you actually load.
 
-[![Crates.io](https://img.shields.io/crates/v/mcp-warmpool.svg)](https://crates.io/crates/mcp-warmpool)
+[![Crates.io](https://img.shields.io/crates/v/lazy-mcp.svg)](https://crates.io/crates/lazy-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/Parth3930/mcp-warmpool/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth3930/mcp-warmpool/actions)
+[![CI](https://github.com/Parth3930/lazy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth3930/lazy-mcp/actions)
 
 ## The Problem
 
 Adding an MCP server to your agent is a one-way door. Every server you add — Supabase, Sentry, Playwright, Betterstack — dumps all of its tool definitions into context permanently, whether you use them once a session or never. Want to add one mid-session? Restart and lose your context. There's no lazy loading, no unloading, no cost visibility. You're paying rent on tools you're not using, every single turn.
 
-`mcp-warmpool` is the single MCP server you point your client at instead of N real ones — it shows you a one-line catalog, loads real tools only when an agent asks for them, and lets you hot-swap servers mid-session without losing your conversation.
+`lazy-mcp` is the single MCP server you point your client at instead of N real ones — it shows you a one-line catalog, loads real tools only when an agent asks for them, and lets you hot-swap servers mid-session without losing your conversation.
 
-| | Without mcp-warmpool | With mcp-warmpool |
+| | Without lazy-mcp | With lazy-mcp |
 |---|---|---|
 | **Tools in context at session start** | 40+ (every configured server) | 4 (`list_servers`, `load_server`, `unload_server`, `server_status`) |
 | **Add a new server mid-session** | Restart client, lose context | `load_server("name")`, keep going |
@@ -26,16 +26,16 @@ Adding an MCP server to your agent is a one-way door. Every server you add — S
 ## Install
 
 ```bash
-cargo install mcp-warmpool
+cargo install lazy-mcp
 ```
 
-Then, configure your Claude Desktop or Claude Code client to point to `mcp-warmpool`:
+Then, configure your Claude Desktop or Claude Code client to point to `lazy-mcp`:
 
 ```json
 {
   "mcpServers": {
-    "mcp-warmpool": {
-      "command": "mcp-warmpool",
+    "lazy-mcp": {
+      "command": "lazy-mcp",
       "args": ["--config", "/path/to/your/config.toml"]
     }
   }
@@ -64,16 +64,16 @@ args = ["-y", "@modelcontextprotocol/server-playwright"]
 
 ## How it works
 
-`mcp-warmpool` acts as a transparent proxy. When it starts, it advertises only its meta-tools to your client. When you ask it to load a server, it spawns that server as a child process, fetches its tool list, namespaces them (e.g. `playwright.navigate`), and fires a `notifications/tools/list_changed` event. Your client re-fetches the tool list and instantly sees the new tools, mid-session.
+`lazy-mcp` acts as a transparent proxy. When it starts, it advertises only its meta-tools to your client. When you ask it to load a server, it spawns that server as a child process, fetches its tool list, namespaces them (e.g. `playwright.navigate`), and fires a `notifications/tools/list_changed` event. Your client re-fetches the tool list and instantly sees the new tools, mid-session.
 
 ## Comparison to Alternatives
 
-There are several other projects in this space, but `mcp-warmpool` is the only one offering a full enterprise-grade feature set:
+There are several other projects in this space, but `lazy-mcp` is the only one offering a full enterprise-grade feature set:
 
-| Feature | GitLab lazy-mcp | mcp-lazy (npm) | voicetreelab/lazy-mcp | lazy-mcp-preload | **mcp-warmpool 0.2** |
+| Feature | GitLab lazy-mcp | mcp-lazy (npm) | voicetreelab/lazy-mcp | lazy-mcp-preload | **lazy-mcp 0.2** |
 |---|:---:|:---:|:---:|:---:|:---:|
 | Basic lazy load/unload | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Config CLI rewriting | ❌ | ✅ | ❌ | ❌ | ✅ (`mcp-warmpool add`) |
+| Config CLI rewriting | ❌ | ✅ | ❌ | ❌ | ✅ (`lazy-mcp add`) |
 | Category browsing | ❌ | ❌ | ✅ | ❌ | ✅ |
 | Warm preloading | ❌ | ❌ | ❌ | ✅ | ✅ |
 | **Shared warm daemon** | ❌ | ❌ | ❌ | ❌ | ✅ (Share servers across IDEs) |
@@ -96,9 +96,9 @@ There are several other projects in this space, but `mcp-warmpool` is the only o
 | `browse_category(path)` | Navigate large server lists hierarchically. |
 
 ## Dashboard & Daemon Mode
-Instead of running separate instances for Claude Desktop, Claude Code, and Cursor, start the `mcp-warmpool daemon`:
+Instead of running separate instances for Claude Desktop, Claude Code, and Cursor, start the `lazy-mcp daemon`:
 ```bash
-mcp-warmpool daemon
+lazy-mcp daemon
 ```
 This runs a shared daemon on `127.0.0.1:4123` and a live web dashboard on `http://127.0.0.1:4124`. Your clients automatically act as thin proxies, sharing the warm server pool to save memory and tokens!
 

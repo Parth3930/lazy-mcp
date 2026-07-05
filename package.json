@@ -1,10 +1,10 @@
 {
-  "name": "mcp-warmpool",
+  "name": "@rover3930/lazy-mcp",
   "version": "0.2.0",
   "description": "A proxy MCP server that lazy-loads other MCP servers to save context tokens.",
   "main": "index.js",
   "bin": {
-    "mcp-warmpool": "./bin/mcp-warmpool.js"
+    "lazy-mcp": "bin/lazy-mcp.js"
   },
   "keywords": [
     "mcp",

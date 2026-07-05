@@ -129,7 +129,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             let loaded_count = reg_lock.loaded.len();
                             let total_tokens: usize = reg_lock.loaded.values().map(|s| s.tools.iter().map(crate::stats::count_tokens).sum::<usize>()).sum();
                             axum::response::Html(format!(
-                                "<h1>mcp-warmpool Dashboard</h1><p>Loaded Servers: {}</p><p>Total Tokens: {}</p>",
+                                "<h1>lazy-mcp Dashboard</h1><p>Loaded Servers: {}</p><p>Total Tokens: {}</p>",
                                 loaded_count, total_tokens
                             ))
                         }
