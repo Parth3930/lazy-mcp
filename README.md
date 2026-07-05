@@ -2,7 +2,7 @@
 
 **npx for MCP servers** — install the catalog once, pay the context cost only for what you actually load.
 
-[![Crates.io](https://img.shields.io/crates/v/lazy-mcp.svg)](https://crates.io/crates/lazy-mcp)
+[![Crates.io](https://img.shields.io/crates/v/lazy-mcp-proxy.svg)](https://crates.io/crates/lazy-mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CI](https://github.com/Parth3930/lazy-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth3930/lazy-mcp/actions)
 
@@ -26,7 +26,7 @@ Adding an MCP server to your agent is a one-way door. Every server you add — S
 ## Install
 
 ```bash
-cargo install lazy-mcp
+cargo install lazy-mcp-proxy
 ```
 
 Then, configure your Claude Desktop or Claude Code client to point to `lazy-mcp`:

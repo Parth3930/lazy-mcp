@@ -659,6 +659,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "lazy-mcp"
+version = "0.2.0"
+dependencies = [
+ "axum",
+ "clap",
+ "dirs",
+ "home",
+ "rmcp",
+ "serde",
+ "serde_json",
+ "tiktoken-rs",
+ "tokio",
+ "toml",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -699,22 +715,6 @@ name = "matchit"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0e7465ac9959cc2b1404e8e2367b43684a6d13790fe23056cc8c6c5a6b7bcb94"
-
-[[package]]
-name = "mcp-warmpool"
-version = "0.2.0"
-dependencies = [
- "axum",
- "clap",
- "dirs",
- "home",
- "rmcp",
- "serde",
- "serde_json",
- "tiktoken-rs",
- "tokio",
- "toml",
-]
 
 [[package]]
 name = "memchr"
