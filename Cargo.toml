@@ -1,0 +1,25 @@
+[package]
+name = "mcplex"
+version = "0.2.0"
+edition = "2024"
+description = "A proxy MCP server that lazy-loads other MCP servers to save context tokens."
+license = "MIT"
+repository = "https://github.com/Parth3930/mcplex"
+keywords = ["mcp", "claude", "ai", "llm"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+axum = "0.7.5"
+clap = { version = "4", features = ["derive"] }
+dirs = "6.0.0"
+home = "0.5.12"
+rmcp = { version = "0.16", features = ["server", "client", "transport-child-process", "transport-io"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0.150"
+tiktoken-rs = "0.12.0"
+tokio = { version = "1", features = ["full"] }
+toml = "1.1.2"
+
+[[bin]]
+name = "mcplex"
+path = "src/main.rs"

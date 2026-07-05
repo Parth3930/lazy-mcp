@@ -1,0 +1,25 @@
+{
+  "name": "mcplex",
+  "version": "0.2.0",
+  "description": "A proxy MCP server that lazy-loads other MCP servers to save context tokens.",
+  "main": "index.js",
+  "bin": {
+    "mcplex": "./bin/mcplex.js"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "ai",
+    "llm",
+    "proxy"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Parth3930/lazy-mcp.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
